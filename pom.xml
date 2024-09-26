@@ -1,0 +1,85 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- Definindo as informações do projeto -->
+  <groupId>com.porto</groupId>
+  <artifactId>exemploEjb</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>war</packaging>
+
+  <name>ExemploEjb</name>
+
+  <!-- Propriedades para o build -->
+  <properties>
+    <maven.compiler.source>21</maven.compiler.source> <!-- Java 21 -->
+    <maven.compiler.target>21</maven.compiler.target>
+    <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+  </properties>
+
+  <!-- Definindo as dependências -->
+  <dependencies>
+
+    <!-- Jakarta EE API - Versão 10 -->
+    <dependency>
+      <groupId>jakarta.platform</groupId>
+      <artifactId>jakarta.jakartaee-api</artifactId>
+      <version>10.0.0</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- JUnit para testes -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>5.8.1</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- Hibernate ORM (se usar JPA, dependência para persistência) -->
+    <dependency>
+      <groupId>org.hibernate.orm</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <version>6.1.7.Final</version>
+      <scope>provided</scope>
+    </dependency>
+
+  </dependencies>
+
+  <!-- Configuração do plugin Maven WAR -->
+  <build>
+    <finalName>exemploEjb</finalName>
+    <plugins>
+      <!-- Plugin para empacotamento do WAR -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.3.1</version>
+        <configuration>
+          <failOnMissingWebXml>false</failOnMissingWebXml>
+        </configuration>
+      </plugin>
+
+      <!-- Plugin para compilação do projeto -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.10.1</version>
+        <configuration>
+          <source>${maven.compiler.source}</source>
+          <target>${maven.compiler.target}</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <!-- Configuração de repositórios -->
+  <repositories>
+    <repository>
+      <id>central</id>
+      <url>https://repo.maven.apache.org/maven2</url>
+    </repository>
+  </repositories>
+
+</project>
